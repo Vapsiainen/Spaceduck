@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private float speed = 20.0f;
-    private float turn = 100.0f;
-    private float jumpForce = 2.0f;
+    public float speed;
+    public float turn;
     private float moveInput;
     private float turnInput;
+    public float jumpForce;
 
     public Rigidbody rb;
 
