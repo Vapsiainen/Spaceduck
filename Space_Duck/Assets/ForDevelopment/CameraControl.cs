@@ -26,7 +26,7 @@ public class CameraControl : MonoBehaviour
 
         //Rotating camera around player
         transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * rotateSpeed * Time.deltaTime);
-        transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * -rotateSpeed * Time.deltaTime);
         cam.LookAt(player);
 
         //Move camera closer or away
