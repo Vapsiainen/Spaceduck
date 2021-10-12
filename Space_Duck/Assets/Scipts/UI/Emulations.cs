@@ -20,7 +20,7 @@ public class Emulations : MonoBehaviour
         collectable.debugSeed = 2;
         collectables.Add(collectable);
 
-        FindObjectOfType<GameScene_UI>().InitializeUI(collectables, currTime);
+        FindObjectOfType<UIManager>().InitializeUI(collectables, currTime);
     }
 
     void Update()
@@ -31,7 +31,7 @@ public class Emulations : MonoBehaviour
         if(currTime <= 0 && !gameOver)
         {
             gameOver = true;
-            FindObjectOfType<GameScene_UI>().ShowGameOver();
+            FindObjectOfType<UIManager>().ShowGameOver();
         }
     }
 }
