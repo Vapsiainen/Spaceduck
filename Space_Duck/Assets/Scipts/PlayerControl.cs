@@ -32,7 +32,7 @@ public class PlayerControl : MonoBehaviour
         transform.Rotate(Vector3.up * turn * turnInput * Time.deltaTime);
 
         //If player presses Space and is on ground, then jump
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (Input.GetKey(KeyCode.Space) && isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
