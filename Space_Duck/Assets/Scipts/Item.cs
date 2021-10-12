@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     public Sprite GrayScaleSprite { get => _grayScaleSprite; set => _grayScaleSprite = value; }
     public Sprite CollectedSprite { get => _collectedSprite; set => _collectedSprite = value; }
 
-    public GameManagerBeta gm;
+    public GameManager gm;
     public int keyId;
 
     // Start is called before the first frame update

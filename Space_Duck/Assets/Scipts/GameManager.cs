@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManagerBeta : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public int energy;
     public int key;
