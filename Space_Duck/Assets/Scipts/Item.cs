@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField]
+    private Sprite _grayScaleSprite, _collectedSprite;
+
+    public Sprite GrayScaleSprite { get => _grayScaleSprite; set => _grayScaleSprite = value; }
+    public Sprite CollectedSprite { get => _collectedSprite; set => _collectedSprite = value; }
 
     public GameManagerBeta gm;
     public int keyId;
