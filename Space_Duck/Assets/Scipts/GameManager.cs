@@ -10,14 +10,22 @@ public class GameManager : MonoBehaviour
     public bool carryingKey = false;
     public int ducks;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    float gravity;
+    float gravityChange;
+
+    private void Start()
     {
-        
+        Physics.gravity = -Vector3.up * gravity;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeGravity(Vector3 dir)
     {
+        Physics.gravity = dir * gravityChange;
+    }
+
+    public void LockGravity(Vector3 dir)
+    {
+        Physics.gravity = dir * gravity;
     }
 }

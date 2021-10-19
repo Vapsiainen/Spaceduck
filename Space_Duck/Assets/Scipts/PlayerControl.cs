@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     private float moveInput;
     private float turnInput;
     private bool isOnGround = true;
+    private bool gravChange = false;
 
     private Rigidbody playerRb;
 
@@ -24,7 +25,10 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         //Get inputs
-        moveInput = Input.GetAxis("Vertical");
+        if (isOnGround)
+        {
+            moveInput = Input.GetAxis("Vertical");
+        }
         turnInput = Input.GetAxis("Horizontal");
 
         //Move player
@@ -37,10 +41,21 @@ public class PlayerControl : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         isOnGround = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.tag == "gravity" && Input.GetKeyDown(KeyCode.F))
+        {
+
+        }
     }
 }
