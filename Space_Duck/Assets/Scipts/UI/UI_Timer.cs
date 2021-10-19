@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class GameScene_UI_Timer : MonoBehaviour
+public class UI_Timer : MonoBehaviour
 {
     [SerializeField]
     private List<Sprite> hourglassSprites;

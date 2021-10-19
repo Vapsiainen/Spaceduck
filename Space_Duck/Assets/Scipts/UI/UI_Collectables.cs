@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class GameScene_UI_Collectables : MonoBehaviour
+public class UI_Collectables : MonoBehaviour
 {
     [SerializeField]
     private GameObject collectableImagePrefab;

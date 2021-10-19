@@ -26,7 +26,7 @@ public class Emulations : MonoBehaviour
     void Update()
     {
         currTime -= Time.deltaTime;
-        FindObjectOfType<GameScene_UI_Timer>().UpdateTime(currTime);
+        FindObjectOfType<UI_Timer>().UpdateTime(currTime);
 
         if(currTime <= 0 && !gameOver)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameScene_UI_EnergyMeter : MonoBehaviour
+public class UI_EnergyMeter : MonoBehaviour
 {
     [SerializeField]
     private Slider energyMeter;

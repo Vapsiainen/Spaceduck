@@ -20,6 +20,6 @@ public class Collectable : MonoBehaviour, ICollectable
     {
         yield return new WaitForSeconds(new System.Random(debugSeed).Next(1, 30));
 
-        FindObjectOfType<GameScene_UI_Collectables>().CollectItem(this);
+        FindObjectOfType<UI_Collectables>().CollectItem(this);
     }
 }
