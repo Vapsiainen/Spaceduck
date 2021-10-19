@@ -11,21 +11,20 @@ public class GameManager : MonoBehaviour
     public int ducks;
 
     [SerializeField]
-    float gravity;
-    float gravityChange;
+    private float defGravity, changeGravity;
 
     private void Start()
     {
-        Physics.gravity = -Vector3.up * gravity;
+        Physics.gravity = -Vector3.up * defGravity;
     }
 
     public void ChangeGravity(Vector3 dir)
     {
-        Physics.gravity = dir * gravityChange;
+        Physics.gravity = dir * changeGravity;
     }
 
     public void LockGravity(Vector3 dir)
     {
-        Physics.gravity = dir * gravity;
+        Physics.gravity = dir * defGravity;
     }
 }
