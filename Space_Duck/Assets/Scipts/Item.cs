@@ -13,17 +13,6 @@ public class Item : MonoBehaviour
     public GameManager gm;
     public int keyId;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerStay(Collider other)
     {
         switch (this.tag)

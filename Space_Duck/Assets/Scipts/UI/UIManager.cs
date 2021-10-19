@@ -7,9 +7,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject gameOverGO;
 
-    public void InitializeUI(List<ICollectable> collectables, float time)
+    public void InitializeUI(List<Item> items, float time)
     {
-        FindObjectOfType<UI_Collectables>().Init(collectables);
+        FindObjectOfType<UI_Collectables>().Init(items);
         FindObjectOfType<UI_Timer>().Init(time);
         FindObjectOfType<UI_EnergyMeter>().Init(100);
     }
@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void CollectItem(Collectable collectable)
+    public void CollectItem(Item collectable)
     {
 
     }
