@@ -9,9 +9,9 @@ public class UIManager : MonoBehaviour
 
     public void InitializeUI(List<ICollectable> collectables, float time)
     {
-        FindObjectOfType<GameScene_UI_Collectables>().Init(collectables);
-        FindObjectOfType<GameScene_UI_Timer>().Init(time);
-        FindObjectOfType<GameScene_UI_EnergyMeter>().Init(100);
+        FindObjectOfType<UI_Collectables>().Init(collectables);
+        FindObjectOfType<UI_Timer>().Init(time);
+        FindObjectOfType<UI_EnergyMeter>().Init(100);
     }
 
     public void ShowGameOver()

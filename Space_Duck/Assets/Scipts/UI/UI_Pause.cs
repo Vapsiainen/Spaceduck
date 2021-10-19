@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameScene_UI_Pause : MonoBehaviour
+public class UI_Pause : MonoBehaviour
 {
     public void ButtonClick_PauseGame()
     {
