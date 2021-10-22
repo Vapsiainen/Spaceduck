@@ -3,7 +3,11 @@ guid: b9678544212d51640a8c35b75d944b9b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _grayScaleSprite: {instanceID: 0}
+  - _collectedSprite: {instanceID: 0}
+  - gm: {instanceID: 0}
+  - keyPrefab: {fileID: 2173116849971405232, guid: f794b761feafbd240ad478a37ae3bcf7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
