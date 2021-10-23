@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class GameScene_UI_Collectables : MonoBehaviour
+public class UI_Collectables : MonoBehaviour
 {
     [SerializeField]
     private GameObject collectableImagePrefab;
@@ -16,18 +16,18 @@ public class GameScene_UI_Collectables : MonoBehaviour
     private float imgScaleMin = 1.0f, imgScaleMax = 1.4f;
     private int animationCount = 3;
 
-    public void Init(List<ICollectable> collectables)
+    public void Init(List<Item> items)
     {
-        foreach (ICollectable collectable in collectables)
+        foreach (Item item in items)
         {
             Image imagePrefab = Instantiate(collectableImagePrefab, collectableImageParent).GetComponent<Image>();
-            imagePrefab.sprite = collectable.GrayScaleSprite;
+            imagePrefab.sprite = item.GrayScaleSprite;
             
             collectableImages.Add(imagePrefab);
         }
     }
 
-    public void CollectItem(ICollectable collectedItem)
+    public void CollectItem(Item collectedItem)
     {
         //TODO: This might need some sound effect to play when collected?
         Image img = collectableImages.First(x => x.sprite == collectedItem.GrayScaleSprite);

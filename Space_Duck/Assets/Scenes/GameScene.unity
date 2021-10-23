@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 402732694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a653991ebe85c24daae14ce08efe337, type: 3}
+  m_Script: {fileID: 11500000, guid: 17db2d176f80aa643960ca2f2ca39604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverGO: {fileID: 911990797}
@@ -3183,9 +3183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed45261accabc874a88b256110bb9433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectablePrefab: {fileID: 3597614487574281481, guid: 9e55afc33d258c64c8a866e1c2ac5007, type: 3}
-  collectedSecondSprite: {fileID: 21300000, guid: 1454420c221132d45917e3b6c406d100, type: 3}
-  grayedSecondSprite: {fileID: 21300000, guid: 8f20db8e939b2784bb0f9af232fe0158, type: 3}
 --- !u!1 &1815904360
 GameObject:
   m_ObjectHideFlags: 0
