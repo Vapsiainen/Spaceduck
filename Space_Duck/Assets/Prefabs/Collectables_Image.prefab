@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4582382112773090879}
   - component: {fileID: 8362232714946201957}
   - component: {fileID: 7471916197684207278}
+  - component: {fileID: 6291528915802377577}
   m_Layer: 0
   m_Name: Collectables_Image
   m_TagString: Untagged
@@ -75,3 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6291528915802377577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675473927708621439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9678544212d51640a8c35b75d944b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _grayScaleSprite: {fileID: 0}
+  _collectedSprite: {fileID: 0}
+  keyId: 0

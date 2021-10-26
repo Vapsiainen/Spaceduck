@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        gm = GameObject.Find("Game manager").GetComponent<GameManager>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -61,7 +61,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        Debug.Log(string.Format("{0}, {1}", Physics.gravity, gravChange));
+        //Debug.Log(string.Format("{0}, {1}", Physics.gravity, gravChange));
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -71,10 +71,10 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Gravity")
-        {
-            gravChangePossible = true;
-        }
+        if (other.tag == "Gravity")       
+            gravChangePossible = true;           
+        else if (other.tag == "Finish")
+            gm.Exit();
     }
 
     private void OnTriggerExit(Collider other)
@@ -85,5 +85,7 @@ public class PlayerControl : MonoBehaviour
             gravChange = false;
             gm.LockGravity(-transform.up);
         }
+        else if (other.tag == "GameOver")
+            gm.GameOver("Duck fell out of the world...");
     }
 }

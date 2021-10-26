@@ -10,8 +10,13 @@ public class Item : MonoBehaviour
     public Sprite GrayScaleSprite { get => _grayScaleSprite; set => _grayScaleSprite = value; }
     public Sprite CollectedSprite { get => _collectedSprite; set => _collectedSprite = value; }
 
-    public GameManager gm;
+    private GameManager gm;
     public int keyId;
+
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -23,7 +28,7 @@ public class Item : MonoBehaviour
                     if (!gm.carryingKey)
                     {
                         Destroy(gameObject);
-                        gm.carryingKey = true;
+                        gm.CollectItem(this);
                         gm.key = keyId;
                     }
                 }
@@ -36,7 +41,7 @@ public class Item : MonoBehaviour
 
             case "Duck":
                 Destroy(gameObject);
-                gm.ducks++;
+                gm.CollectDuck(this);
                 break;
         }
         

@@ -16,7 +16,7 @@ public class UI_Collectables : MonoBehaviour
     private float imgScaleMin = 1.0f, imgScaleMax = 1.4f;
     private int animationCount = 3;
 
-    public void Init(List<Item> items)
+    public void Init(Item[] items)
     {
         foreach (Item item in items)
         {
