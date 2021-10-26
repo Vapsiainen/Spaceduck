@@ -4,27 +4,61 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    [SerializeField]
+    private float rotationSensitivity = 5.0f;
 
-    //public Transform player;
-    public Transform cam;
+    private float zoomSensitivity = 3.0f;
+    private float mouseX;
+    private float mouseY;
+    private float rotationX;
+    private float rotationY;
+    private Vector3 nextRotation;
+    private Vector3 currentRotation;
+    private Vector3 smoothVelocity = Vector3.zero;
 
-    public float rotateSpeed;
-    public float zoomSpeed;
+    [SerializeField]
+    private float smoothTime = 3.0f;
+
+    [SerializeField]
+    private float distance = 3.0f;
+
+    public Transform target;
+
 
     private void Start()
     {
-        //Locking camera rotation point to player center
-        //transform.position = player.position;
+        //Make a starting point for the camera so the start of the game is not so awkward
     }
 
-    void Update()
+    private void Update()
     {
-        //Rotating camera around player
-        transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * rotateSpeed * Time.deltaTime);
-        transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * -rotateSpeed * Time.deltaTime);
-        cam.LookAt(this.transform);
+        //Get mouse input
+        mouseX = Input.GetAxis("Mouse X") * rotationSensitivity;
+        mouseY = Input.GetAxis("Mouse Y") * rotationSensitivity;
 
-        //Move camera closer or away
-        cam.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * zoomSpeed * Time.deltaTime);
+        rotationX += mouseY;
+        rotationY += mouseX;
+
+        rotationX = Mathf.Clamp(rotationX, -40, 40);
+
+        currentRotation = Vector3.SmoothDamp(currentRotation, nextRotation, ref smoothVelocity, smoothTime);
+        nextRotation = new Vector3(rotationX, rotationY, 0);
+
+        transform.localEulerAngles = currentRotation;
+
+        transform.position = target.position -transform.forward * distance;
+
+
+        //Zooming
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        {
+            float zoomAmount = Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
+
+            zoomAmount *= distance * 0.3f;
+
+            distance += zoomAmount * -1f;
+
+            distance = Mathf.Clamp(distance, 1.5f, 100f);
+        }
     }
 }

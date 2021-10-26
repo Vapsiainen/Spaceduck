@@ -7,14 +7,15 @@ public class PlayerControl : MonoBehaviour
     public float speed;
     public float turn;
     public float jumpForce;
+    public GameObject keyPrefab;
 
     private float moveInput;
     private float turnInput;
     private bool isOnGround = true;
     private bool gravChange = false;
     private bool gravChangePossible = false;
-    GameManager gm;
 
+    private GameManager gm;
     private Rigidbody playerRb;
 
     private void Start()
@@ -32,16 +33,19 @@ public class PlayerControl : MonoBehaviour
         }
         turnInput = Input.GetAxis("Horizontal");
 
-        //Move player
+        //Move and rotate player according to input
         transform.Translate(Vector3.forward * speed * moveInput * Time.deltaTime);
         transform.Rotate(Vector3.up * turn * turnInput * Time.deltaTime);
+
 
         //If player presses Space and is on ground, then jump
         if (Input.GetKey(KeyCode.Space) && isOnGround && !gravChange)
         {
+            //playerRb.freezeRotation = true;
             playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
+
 
         if (gravChangePossible)
         {
@@ -62,11 +66,19 @@ public class PlayerControl : MonoBehaviour
         }
 
         //Debug.Log(string.Format("{0}, {1}", Physics.gravity, gravChange));
+
+        dropKey();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         isOnGround = true;
+        playerRb.freezeRotation = false;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        playerRb.freezeRotation = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,5 +99,16 @@ public class PlayerControl : MonoBehaviour
         }
         else if (other.tag == "GameOver")
             gm.GameOver("Duck fell out of the world...");
+    }
+
+
+    private void dropKey()
+    {
+        //If player presses R and is already carrying key, instantiate a new keyPrefab next to player
+        if (Input.GetKey(KeyCode.R) && gm.carryingKey)
+        {
+            Instantiate(keyPrefab, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+            gm.carryingKey = false;
+        }
     }
 }
