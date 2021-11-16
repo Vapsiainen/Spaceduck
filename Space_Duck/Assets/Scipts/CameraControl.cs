@@ -5,9 +5,9 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     [SerializeField]
-    private float rotationSensitivity = 5.0f;
+    public float rotationSensitivity = 5.0f;
 
-    private float zoomSensitivity = 3.0f;
+    public float zoomSensitivity = 3.0f;
     private float mouseX;
     private float mouseY;
     private float rotationX;

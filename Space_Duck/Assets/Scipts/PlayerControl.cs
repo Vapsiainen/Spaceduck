@@ -29,45 +29,22 @@ public class PlayerControl : MonoBehaviour
         //Get inputs
         if (isOnGround)
         {
-            moveInput = Input.GetAxis("Vertical");
+            moveInput = Input.GetAxisRaw("Vertical");
         }
-        turnInput = Input.GetAxis("Horizontal");
-
-        //Move and rotate player according to input
-        transform.Translate(Vector3.forward * speed * moveInput * Time.deltaTime);
-        transform.Rotate(Vector3.up * turn * turnInput * Time.deltaTime);
+        turnInput = Input.GetAxisRaw("Horizontal");
 
 
         //If player presses Space and is on ground, then jump
         if (Input.GetKey(KeyCode.Space) && isOnGround && !gravChange)
         {
-            //playerRb.freezeRotation = true;
-            playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
+            Jump();
         }
 
+        CheckGravChange();
 
-        if (gravChangePossible)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                if (gravChange)
-                {
-                    gm.LockGravity(-transform.up);
-                    Debug.Log("test");
-                }
-                gravChange = !gravChange;
-            }
+        Move();
 
-            if (gravChange)
-            {
-                gm.ChangeGravity(-transform.up);
-            }
-        }
-
-        //Debug.Log(string.Format("{0}, {1}", Physics.gravity, gravChange));
-
-        dropKey();
+        DropKey();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -83,8 +60,8 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Gravity")       
-            gravChangePossible = true;           
+        if (other.tag == "Gravity")
+            gravChangePossible = true;
         else if (other.tag == "Finish")
             gm.Exit();
     }
@@ -101,14 +78,47 @@ public class PlayerControl : MonoBehaviour
             gm.GameOver("Duck fell out of the world...");
     }
 
+    public void Move()
+    {
+        //Move and rotate player according to input
+        transform.Translate(Vector3.forward * speed * moveInput * Time.deltaTime);
+        transform.Rotate(Vector3.up * turn * turnInput * Time.deltaTime);
+    }
 
-    private void dropKey()
+    public void Jump()
+    {
+        playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        isOnGround = false;
+    }
+
+    public void DropKey()
     {
         //If player presses R and is already carrying key, instantiate a new keyPrefab next to player
         if (Input.GetKey(KeyCode.R) && gm.carryingKey)
         {
             Instantiate(keyPrefab, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
             gm.carryingKey = false;
+        }
+    }
+
+    public void CheckGravChange()
+    {
+        if (gravChangePossible)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (gravChange)
+                {
+                    gm.LockGravity(-transform.up);
+                    Debug.Log("test");
+                }
+                gravChange = !gravChange;
+            }
+
+            if (gravChange)
+            {
+                gm.ChangeGravity(-transform.up);
+            }
         }
     }
 }
