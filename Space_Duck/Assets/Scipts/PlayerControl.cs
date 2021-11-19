@@ -61,7 +61,10 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Gravity")
+        {
             gravChangePossible = true;
+            speed = 1.5f;
+        }
         else if (other.tag == "Finish")
             gm.Exit();
     }
@@ -73,6 +76,7 @@ public class PlayerControl : MonoBehaviour
             gravChangePossible = false;
             gravChange = false;
             gm.LockGravity(-transform.up);
+            speed = 3f;
         }
         else if (other.tag == "GameOver")
             gm.GameOver("Duck fell out of the world...");

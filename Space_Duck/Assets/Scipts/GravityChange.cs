@@ -5,11 +5,17 @@ using UnityEngine;
 public class GravityChange : MonoBehaviour
 {
     public float gravityVal;
+    private Rigidbody rb;
     Vector3 gravityDir;
 
-    private void Update()
+    private void Start()
     {
-        gravityDir = -transform.up;
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
+    {
+        gravityDir = new Vector3(0, -90, 0);
         ChangeGravity(gravityDir);
     }
 
