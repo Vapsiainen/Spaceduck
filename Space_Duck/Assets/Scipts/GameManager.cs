@@ -17,8 +17,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float defGravity = 9.14f, changeGravity = 9.14f;
+    [SerializeField]
+    private List<AudioSource> musicSources = new List<AudioSource>();
+    [SerializeField]
+    List<AudioSource> effectSources = new List<AudioSource>();
     private UIManager uiManager;
     private bool isPaused, gameOver;
+    private PlayerControl player;
+    private CameraControl cameraControl;
 
     public bool IsGameOver
     {
@@ -51,11 +57,48 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerControl>();
+        cameraControl = FindObjectOfType<CameraControl>();
+        LoadFromSettings();
+
         IsPaused = false;
         Physics.gravity = -Vector3.up * defGravity;
 
         uiManager = FindObjectOfType<UIManager>();
         uiManager.InitializeUI(FindObjectsOfType<Item>(), levelTime);        
+    }
+
+    private void LoadFromSettings()
+    {
+        PermanentData permanentData = FindObjectOfType<PermanentData>();
+        if (permanentData != null)
+        {
+            foreach (AudioSource musicSource in musicSources)
+            {
+                if (permanentData.settings.musicOn)
+                    musicSource.volume = permanentData.settings.musicVolume;
+                else
+                    musicSource.volume = 0;
+            }
+
+            foreach (AudioSource effectSource in effectSources)
+            {
+                if (permanentData.settings.soundsOn)
+                    effectSource.volume = permanentData.settings.soundsVolume;
+                else
+                    effectSource.volume = 0;
+            }
+            if(player != null)
+            {
+                player.speed = permanentData.settings.duckMovementSpeed;
+                player.turn = permanentData.settings.duckRotationSpeed;
+            }
+            if(cameraControl != null)
+            {
+                cameraControl.rotationDirY = permanentData.settings.invertMouseY ? -1 : 1;
+                cameraControl.rotationDirX = permanentData.settings.invertMouseX ? -1 : 1;
+            }
+        }
     }
 
     private void Update()

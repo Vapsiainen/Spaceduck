@@ -8,9 +8,9 @@ public class MainMenu_UI : MonoBehaviour
     [SerializeField]
     private UI_Settings settingsPanel;
 
-    public void ButtonClick_StartGame()
+    public void ButtonClick_StartGame(int index)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(index);
     }
 
     public void ButtonClick_ShowSettings()

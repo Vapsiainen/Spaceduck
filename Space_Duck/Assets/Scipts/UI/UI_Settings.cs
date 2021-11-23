@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class UI_Settings : MonoBehaviour
 {
     [SerializeField]
-    private Toggle soundsToggle, musicToggle, invertMouseToggle;
+    private Toggle soundsToggle, musicToggle, invertMouseYToggle, invertMouseXToggle;
     [SerializeField]
-    private Slider soundSlider, musicSlider;
+    private Slider soundSlider, musicSlider, movementSpeedSlider, rotationSpeedSlider;
 
     public void Init()
     {
@@ -21,7 +21,10 @@ public class UI_Settings : MonoBehaviour
     {
         soundsToggle.isOn = PermanentData.instance.settings.soundsOn;
         musicToggle.isOn = PermanentData.instance.settings.musicOn;
-        invertMouseToggle.isOn = PermanentData.instance.settings.invertMouse;
+        invertMouseYToggle.isOn = PermanentData.instance.settings.invertMouseY;
+        invertMouseXToggle.isOn = PermanentData.instance.settings.invertMouseX;
+        movementSpeedSlider.value = PermanentData.instance.settings.duckMovementSpeed;
+        rotationSpeedSlider.value = PermanentData.instance.settings.duckRotationSpeed;
 
         if (soundsToggle.isOn)
         {
@@ -59,9 +62,15 @@ public class UI_Settings : MonoBehaviour
         UpdateUI();
     }
 
-    public void Toggle_MouseInvertion()
+    public void Toggle_MouseInvertionY()
     {
-        PermanentData.instance.settings.invertMouse = invertMouseToggle.isOn;
+        PermanentData.instance.settings.invertMouseY = invertMouseYToggle.isOn;        
+        UpdateUI();
+    }
+
+    public void Toggle_MouseInvertionX()
+    {
+        PermanentData.instance.settings.invertMouseX = invertMouseXToggle.isOn;
         UpdateUI();
     }
 
@@ -74,6 +83,18 @@ public class UI_Settings : MonoBehaviour
     public void Slide_SoundVolume()
     {
         PermanentData.instance.settings.soundsVolume = soundSlider.value;
+        UpdateUI();
+    }
+
+    public void Slide_RotationSpeed()
+    {
+        PermanentData.instance.settings.duckRotationSpeed = rotationSpeedSlider.value;
+        UpdateUI();
+    }
+
+    public void Slide_MovementSpeed()
+    {
+        PermanentData.instance.settings.duckMovementSpeed = movementSpeedSlider.value;
         UpdateUI();
     }
 }

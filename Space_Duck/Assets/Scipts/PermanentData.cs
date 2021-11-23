@@ -13,7 +13,8 @@ public class PermanentData : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-        Debug.Log(instance);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public Settings settings;

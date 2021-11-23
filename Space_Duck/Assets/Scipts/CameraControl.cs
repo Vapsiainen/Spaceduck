@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     [SerializeField]
-    public float rotationSensitivity = 5.0f;
+    public float rotationSensitivity = 5.0f, rotationDirY = 1, rotationDirX = 1;
 
     public float zoomSensitivity = 3.0f;
     private float mouseX;
@@ -28,13 +28,15 @@ public class CameraControl : MonoBehaviour
     private void Start()
     {
         //Make a starting point for the camera so the start of the game is not so awkward
+
+
     }
 
     private void Update()
     {
         //Get mouse input
-        mouseX = Input.GetAxis("Mouse X") * rotationSensitivity;
-        mouseY = Input.GetAxis("Mouse Y") * rotationSensitivity;
+        mouseX = Input.GetAxis("Mouse X") * rotationSensitivity * rotationDirX;
+        mouseY = Input.GetAxis("Mouse Y") * rotationSensitivity * rotationDirY;
 
         rotationX += mouseY;
         rotationY += mouseX;
