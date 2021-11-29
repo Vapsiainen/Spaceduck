@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     private bool isPaused, gameOver;
     private PlayerControl player;
     private CameraControl cameraControl;
+    private GameProgress progress;
 
     public bool IsGameOver
     {
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerControl>();
-        cameraControl = FindObjectOfType<CameraControl>();
+        cameraControl = FindObjectOfType<CameraControl>();       
         LoadFromSettings();
 
         IsPaused = false;
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(string message)
     {
         uiManager.ShowGameOver(message);
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         IsGameOver = true;
     }
 
@@ -153,6 +156,13 @@ public class GameManager : MonoBehaviour
         if (carryingKey)
         {
             IsGameOver = true;
+
+            PermanentData permanentData = FindObjectOfType<PermanentData>();
+            Level currentLevel = permanentData.progress.levels.FirstOrDefault(x => x.levelIndex == SceneManager.GetActiveScene().buildIndex);
+            currentLevel.ducklingCollected = ducks > 0;
+            currentLevel.Cleared(levelTime);
+            permanentData.SaveProgress();
+
             uiManager.ShowLevelComplete("Level complete!");
         }
     }
@@ -160,6 +170,11 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void TryAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void CollectDuck(Item item)

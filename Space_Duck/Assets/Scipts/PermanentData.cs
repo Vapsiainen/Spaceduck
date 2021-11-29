@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PermanentData : MonoBehaviour
 {
@@ -15,9 +16,13 @@ public class PermanentData : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+
+        LoadSettings();
+        LoadProgress();
     }
 
     public Settings settings;
+    public GameProgress progress;
 
     private string SettingsFilePath { get => Application.persistentDataPath + "/settings.txt"; }
 
@@ -33,6 +38,7 @@ public class PermanentData : MonoBehaviour
     {
         if (File.Exists(SettingsFilePath))
         {
+            Debug.Log(SettingsFilePath);
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(SettingsFilePath, FileMode.Open);
             settings = (Settings)bf.Deserialize(file);
@@ -40,6 +46,28 @@ public class PermanentData : MonoBehaviour
         }
         else
             settings = new Settings();
-        Debug.Log(settings);
+    }
+
+    private string ProgressFilePath { get => Application.persistentDataPath + "/progress.txt"; }
+
+    public void SaveProgress()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(ProgressFilePath);
+        bf.Serialize(file, progress);
+        file.Close();
+    }
+
+    public void LoadProgress()
+    {
+        if (File.Exists(ProgressFilePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(ProgressFilePath, FileMode.Open);
+            progress = (GameProgress)bf.Deserialize(file);
+            file.Close();
+        }
+        else
+            progress = new GameProgress();
     }
 }
