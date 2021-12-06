@@ -159,7 +159,10 @@ public class GameManager : MonoBehaviour
 
             PermanentData permanentData = FindObjectOfType<PermanentData>();
             Level currentLevel = permanentData.progress.levels.FirstOrDefault(x => x.levelIndex == SceneManager.GetActiveScene().buildIndex);
-            currentLevel.ducklingCollected = ducks > 0;
+
+            if(!currentLevel.ducklingCollected)
+                currentLevel.ducklingCollected = ducks > 0;
+
             currentLevel.Cleared(levelTime);
             permanentData.SaveProgress();
 

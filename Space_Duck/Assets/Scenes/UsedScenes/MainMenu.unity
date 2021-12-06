@@ -5818,7 +5818,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 7e85031d502cae847b24905da93ae24c, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5826,7 +5826,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.1
 --- !u!222 &1405045818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7068,7 +7068,7 @@ GameObject:
   - component: {fileID: 1695050237}
   - component: {fileID: 1695050236}
   m_Layer: 0
-  m_Name: Text (TMP) (2)
+  m_Name: Collectable_Text_Record
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
