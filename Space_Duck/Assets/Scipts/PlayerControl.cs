@@ -22,10 +22,12 @@ public class PlayerControl : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         gm = FindObjectOfType<GameManager>();
+        
     }
 
     void Update()
     {
+        playerRb.freezeRotation = true;
         //Get inputs
         if (isOnGround)
         {
@@ -121,6 +123,7 @@ public class PlayerControl : MonoBehaviour
 
             if (gravChange)
             {
+                playerRb.freezeRotation = false;
                 gm.ChangeGravity(-transform.up);
             }
         }
