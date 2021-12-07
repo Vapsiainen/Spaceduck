@@ -15,6 +15,7 @@ public class MainMenu_UI : MonoBehaviour
 
     public void ButtonClick_ShowSettings()
     {
-        settingsPanel.gameObject.SetActive(true);        
+        settingsPanel.gameObject.SetActive(true);
+        settingsPanel.Init();
     }
 }
