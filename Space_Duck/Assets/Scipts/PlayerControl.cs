@@ -22,12 +22,12 @@ public class PlayerControl : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         gm = FindObjectOfType<GameManager>();
-        
+        playerRb.freezeRotation = true;
     }
 
     void Update()
     {
-        playerRb.freezeRotation = true;
+        
         //Get inputs
         if (isOnGround)
         {
@@ -52,12 +52,6 @@ public class PlayerControl : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isOnGround = true;
-        playerRb.freezeRotation = false;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        playerRb.freezeRotation = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -116,7 +110,7 @@ public class PlayerControl : MonoBehaviour
                 if (gravChange)
                 {
                     gm.LockGravity(-transform.up);
-                    Debug.Log("test");
+                    playerRb.freezeRotation = true;
                 }
                 gravChange = !gravChange;
             }
