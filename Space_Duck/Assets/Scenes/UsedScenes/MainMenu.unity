@@ -2849,8 +2849,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bestTime: {fileID: 841895921}
   ducklingImage: {fileID: 2139023066}
-  notCollectedDucklingSprite: {fileID: 21300000, guid: 8f20db8e939b2784bb0f9af232fe0158, type: 3}
-  collectedDucklingSprite: {fileID: 21300000, guid: 1454420c221132d45917e3b6c406d100, type: 3}
+  notCollectedDucklingSprite: {fileID: 21300000, guid: 47ec4c5133df4b34bb36849550840a12, type: 3}
+  collectedDucklingSprite: {fileID: 21300000, guid: c6ca8a62391957d41a37f208c432673f, type: 3}
   shader: {fileID: 1028997953}
 --- !u!114 &565514971
 MonoBehaviour:
@@ -3673,8 +3673,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bestTime: {fileID: 781649105}
   ducklingImage: {fileID: 1051911424}
-  notCollectedDucklingSprite: {fileID: 21300000, guid: 8f20db8e939b2784bb0f9af232fe0158, type: 3}
-  collectedDucklingSprite: {fileID: 21300000, guid: 1454420c221132d45917e3b6c406d100, type: 3}
+  notCollectedDucklingSprite: {fileID: 21300000, guid: 47ec4c5133df4b34bb36849550840a12, type: 3}
+  collectedDucklingSprite: {fileID: 21300000, guid: c6ca8a62391957d41a37f208c432673f, type: 3}
   shader: {fileID: 113244570}
 --- !u!114 &785536560
 MonoBehaviour:
@@ -6482,8 +6482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bestTime: {fileID: 1695050236}
   ducklingImage: {fileID: 41287812}
-  notCollectedDucklingSprite: {fileID: 21300000, guid: 8f20db8e939b2784bb0f9af232fe0158, type: 3}
-  collectedDucklingSprite: {fileID: 21300000, guid: 1454420c221132d45917e3b6c406d100, type: 3}
+  notCollectedDucklingSprite: {fileID: 21300000, guid: 47ec4c5133df4b34bb36849550840a12, type: 3}
+  collectedDucklingSprite: {fileID: 21300000, guid: c6ca8a62391957d41a37f208c432673f, type: 3}
   shader: {fileID: 1819772839}
 --- !u!1 &1594877061
 GameObject:
