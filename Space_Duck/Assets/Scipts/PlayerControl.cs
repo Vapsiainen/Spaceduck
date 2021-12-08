@@ -59,7 +59,7 @@ public class PlayerControl : MonoBehaviour
         if (other.tag == "Gravity")
         {
             gravChangePossible = true;
-            speed = 1.5f;
+            speed = FindObjectOfType<PermanentData>().settings.duckMovementSpeed/2f;
         }
         else if (other.tag == "Finish")
             gm.Exit();
@@ -72,7 +72,7 @@ public class PlayerControl : MonoBehaviour
             gravChangePossible = false;
             gravChange = false;
             gm.LockGravity(-transform.up);
-            speed = 3f;
+            speed = FindObjectOfType<PermanentData>().settings.duckMovementSpeed;
         }
         else if (other.tag == "GameOver")
             gm.GameOver("Duck fell out of the world...");
