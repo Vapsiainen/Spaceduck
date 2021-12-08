@@ -5,6 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_UI : MonoBehaviour
 {
+    private Camera camera;
+
+    private void Start()
+    {
+        camera = FindObjectOfType<Camera>();
+    }
+
+    private void Update()
+    {
+        camera.transform.RotateAroundLocal(Vector3.up, Time.deltaTime * 0.025f);
+    }
+
     [SerializeField]
     private UI_Settings settingsPanel;
 
