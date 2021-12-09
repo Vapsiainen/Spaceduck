@@ -842,7 +842,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550002241}
-  m_LocalRotation: {x: 0.16018225, y: -0.000000008492102, z: 0.0000000013780787, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018225, y: 0.0000000084921, z: -0.0000000013780783, w: 0.9870875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4054,6 +4054,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1899384319}
+    - target: {fileID: 7435008082344513512, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435008082344513512, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
+      propertyPath: m_BlendUpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7435008082344513513, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
       propertyPath: target
       value: 
@@ -4126,7 +4134,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7435008082344513513, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
 --- !u!23 &7640539893468152683
 MeshRenderer:

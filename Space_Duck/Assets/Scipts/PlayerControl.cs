@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
         playerRb.freezeRotation = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         
         //Get inputs

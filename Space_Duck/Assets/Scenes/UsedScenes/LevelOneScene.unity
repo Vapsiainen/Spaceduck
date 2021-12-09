@@ -1619,6 +1619,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReturnToMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7435008082344513512, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435008082344513512, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
+      propertyPath: m_BlendUpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7435008082344513513, guid: bbc23442c6b8c9041a9a264f251e7f06, type: 3}
       propertyPath: target
       value: 
