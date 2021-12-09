@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     {
         FindObjectOfType<UI_Collectables>().Init(items);
         FindObjectOfType<UI_Timer>().Init(time);
-        //FindObjectOfType<UI_EnergyMeter>().Init(100);
     }
 
     public void ShowGameOver(string message)

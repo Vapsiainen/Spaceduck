@@ -7,6 +7,8 @@ public class MainMenu_UI : MonoBehaviour
 {
     private Camera camera;
 
+    public AudioSource clickSource;
+
     private void Start()
     {
         camera = FindObjectOfType<Camera>();
@@ -15,6 +17,13 @@ public class MainMenu_UI : MonoBehaviour
     private void Update()
     {
         camera.transform.RotateAroundLocal(Vector3.up, Time.deltaTime * 0.025f);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            clickSource.mute = !FindObjectOfType<PermanentData>().settings.soundsOn;
+            clickSource.volume = FindObjectOfType<PermanentData>().settings.soundsVolume;
+            clickSource.Play();
+        }
     }
 
     [SerializeField]

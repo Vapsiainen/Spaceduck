@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool carryingKey = false;
     public int ducks;
 
+    public AudioSource clickSource;
+
     [SerializeField]
     private float defGravity = 9.14f, changeGravity = 9.14f;
     [SerializeField]
@@ -125,6 +127,11 @@ public class GameManager : MonoBehaviour
                 uiManager.ShowPause();
             else
                 uiManager.HidePause();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            clickSource.Play();
         }
     }
 

@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     public float speed;
     public float turn;
     public float jumpForce;
-    public GameObject keyPrefab;
+    public GameObject keyPrefab;  
 
     private float moveInput;
     private float turnInput;
@@ -17,6 +17,8 @@ public class PlayerControl : MonoBehaviour
 
     private GameManager gm;
     private Rigidbody playerRb;
+
+
 
     private void Start()
     {

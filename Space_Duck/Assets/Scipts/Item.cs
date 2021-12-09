@@ -13,9 +13,29 @@ public class Item : MonoBehaviour
     private GameManager gm;
     public int keyId;
 
+    public AudioSource quackSource;
+    private float quackTimer = 8.0f, timer = 0;
+
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
+    }
+
+    private void Update()
+    {
+        if (tag != "Duck")
+            return;
+
+        if (timer > quackTimer)
+        {
+            quackSource.Play();
+            timer = 0;
+            quackTimer = new System.Random().Next(8, 20);
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     private void OnTriggerStay(Collider other)
