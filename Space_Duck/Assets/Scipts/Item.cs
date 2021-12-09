@@ -43,7 +43,7 @@ public class Item : MonoBehaviour
         switch (this.tag)
         {
             case "Key":
-                if (Input.GetKey(KeyCode.E))
+                if (true)
                 {
                     if (!gm.carryingKey)
                     {
